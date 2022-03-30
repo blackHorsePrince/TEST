@@ -1,0 +1,26 @@
+<button (click)="addNewItem()">
+  <a routerLink="/qwe" routerLinkActive="active">{{hello}}</a>
+</button>
+<div><img src="{{path}}" alt="" style="width: 200px; height: 100px;"></div>
+<!-- <template></template> -->
+<ul>
+  <li *ngFor="let item of list" style="list-style: none; font-size: 20px;">{{item.name}}</li>
+</ul>
+<!-- <router-outlet></router-outlet> -->
+
+<button (click)="showdiv()">点击</button>
+<div *ngIf="look" style="width: 100px; height: 100px; background: red;"></div>
+<div class="wrapper">
+  <!-- <h1 class="title">Angular Router</h1> -->
+  <nav>
+    <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
+    <a routerLink="/superheroes" routerLinkActive="active">Heroes</a>
+    <a routerLink="/admin" routerLinkActive="active">Admin</a>
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+  </nav>
+  <div [@routeAnimation]="getAnimationData(routerOutlet)">
+    <router-outlet #routerOutlet="outlet"></router-outlet>
+  </div>
+  <router-outlet name="popup"></router-outlet>
+</div>
